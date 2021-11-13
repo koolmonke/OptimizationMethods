@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net5.0</TargetFramework>
+        <WarnOn>3390;$(WarnOn)</WarnOn>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="Functions.Expressions.fs" />
+        <Compile Include="Functions.Operators.fs" />
+        <Compile Include="Optimization.BitwiseSearch.fs" />
+        <Compile Include="Optimization.Chord.fs" />
+        <Compile Include="Optimization.Dichotomy.fs" />
+        <Compile Include="Optimization.Enumeration.fs" />
+        <Compile Include="Optimization.Fibonacci.fs" />
+        <Compile Include="Optimization.GoldenSection.fs" />
+        <Compile Include="Optimization.Midpoint.fs" />
+        <Compile Include="Optimization.Newton.fs" />
+        <Compile Include="Optimization.Polyline.fs" />
+        <Compile Include="Program.fs" />
+    </ItemGroup>
+
+</Project>
