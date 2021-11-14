@@ -1,17 +1,24 @@
 module Optimization.Polyline
 
 
-let argmin (left, right) accuracy fp f =
+let argmin (left, right) accuracy f fp =
     let L =
-        [ left; right ] |> List.map (fp >> abs) |> List.max
+        [ left; right ]
+        |> List.map (fp >> abs)
+        |> List.max
 
     let rec r_argmin (left, right) =
+        let f_left = f left
+        let f_right = f right
+
         let x0 =
             (1.0 / (2.0 * L))
-            * ((f left) - (f right) + L * (left + right))
+            * (f_left - f_right + L * (left + right))
 
-        let p0 = 0.5 * ((f left) + (f right) + L * (left - right))
-        let d = (1.0 / (2.0 * L)) * ((f x0) - p0)
+        let p0 =
+            0.5 * (f_left + f_right + L * (left - right))
+
+        let d = (1.0 / (2.0 * L)) * (f x0 - p0)
         let x1p = x0 - d
         let x1pp = x0 + d
         let ld = 2.0 * L * d

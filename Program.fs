@@ -1,18 +1,12 @@
-﻿// Learn more about F# at http://fsharp.org
-
-open Optimization
+﻿open Optimization
 open Functions.Expressions
 open Functions.Operators
 
 let range = (-7., 3.)
 
-let a, b = range
-
-let delta = 1e-10
-
 let x = Var "x"
 
-let f =
+let expr =
     x ** 4. + Val 8. * x ** 3.
     - Val 8. * x ** 2.
     - Val 96. * x
@@ -20,16 +14,15 @@ let f =
 
 [<EntryPoint>]
 let main _ =
-    printfn $"expr = %s{show f}"
+    printfn $"expr = %s{show expr}"
 
-    let f_1 = call f
-    let fp = call (diff f "x")
+    let f = call expr
+    let fp = call (diff expr "x")
 
-    let x_star_poly = Polyline.argmin range delta fp f_1
-    let x_star_enum = Enumeration.argmin 22 range f_1
+    let x_star_poly = Polyline.argmin range 1e-10 f fp
+    let x_star_enum = Enumeration.argmin range 22 f
 
-    printfn $"%f{x_star_poly}"
-    printfn $"%f{x_star_enum}"
-
+    printfn $"x_star для метода ломанных %f{x_star_poly}"
+    printfn $"x_star для метода перебора %f{x_star_enum}"
 
     0

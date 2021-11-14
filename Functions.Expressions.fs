@@ -19,7 +19,7 @@ let rec diff f x =
     | Add (f, g) -> Add(diff f x, diff g x)
     | Sub (f, g) -> Sub(diff f x, diff g x)
     | Mul (f, g) -> Add(Mul(f, diff g x), Mul(g, diff f x))
-    | Pow (f, g) when (g - 1.) = 1. -> Mul(Val g, f)
+    | Pow (f, 2.)  -> Mul(Val 2., f)
     | Pow (f, g) -> Mul(Val g, Pow(f, g - 1.))
 
 let rec call expr x =
