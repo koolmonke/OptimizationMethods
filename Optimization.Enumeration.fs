@@ -1,7 +1,5 @@
 module Optimization.Enumeration
 
-let methodName = "Метод перебора"
-
 let private segments n start finish : seq<float> =
     seq {
         for i in 1 .. 2 .. 2 * n ->

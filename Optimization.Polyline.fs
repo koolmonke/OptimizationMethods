@@ -1,6 +1,5 @@
 module Optimization.Polyline
 
-let methodName = "Метод ломаных отезков"
 
 let argmin (left, right) accuracy fp f =
     let L =
