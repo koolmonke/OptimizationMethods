@@ -26,7 +26,7 @@ let rec call expr x =
     match expr with
     | Val number -> number
     | Var "x" -> x
-    | Var var -> failwith $"Variable '%s{var}' not allowed."
+    | Var var -> failwith $"Переменная '%s{var}' не разрешена."
     | Add (a, b) -> (call a x) + (call b x)
     | Sub (a, b) -> (call a x) - (call b x)
     | Mul (a, b) -> (call a x) * (call b x)
