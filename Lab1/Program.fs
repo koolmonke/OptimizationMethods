@@ -1,9 +1,6 @@
 open System.Collections.Generic
 open OptimizationMethods
 
-let range = (0., 4.)
-
-
 let memoization f x =
     let dict = Dictionary<_, _>()
 
@@ -14,16 +11,20 @@ let memoization f x =
         dict.Add(x, tmp)
         tmp
 
-let f x =
-    4.0 * x * x - 8.0 * x + 8.0 + 19.0 * abs (x - 3.0)
+let n = 22
 
-let f_memo = memoization f
+let range = (0., 4.)
+
+let f =
+    let inner_f x =
+        4.0 * x * x - 8.0 * x + 8.0 + 19.0 * abs (x - 3.0)
+
+    memoization inner_f
 
 [<EntryPoint>]
 let main _ =
-    let n = 22
-    let x_star_passive = Passive.argmin range n f_memo
-    let x_star_golden = Golden.argmin range n f_memo
+    let x_star_passive = Passive.argmin range n f
+    let x_star_golden = Golden.argmin range n f
 
 
     printfn $"x_star для пассивного метода %f{x_star_passive}"
@@ -31,7 +32,11 @@ let main _ =
     printfn $"Фактическая точность %f{abs (3.0 - x_star_passive)}"
 
     printfn $"x_star для метода золотого сечения %f{x_star_golden}"
-    printfn $"Теоретическая точность %f{(fst range - snd range) / (2.0 * pown Golden.bigger_root (n-1))}"
+
+    printfn
+        $"Теоретическая точность %f{(fst range - snd range)
+                                    / (2.0 * pown Golden.bigger_root (n - 1))}"
+
     printfn $"Фактическая точность %f{abs (3.0 - x_star_golden)}"
 
     0
