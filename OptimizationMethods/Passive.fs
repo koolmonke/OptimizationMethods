@@ -1,10 +1,9 @@
 ﻿module OptimizationMethods.Passive
 
-let argmin (start, finish) n (f: float -> float) : float =
+let argmin (start, finish) n f =
     let step = (finish - start) / float (n / 2 + 1)
 
-    let points =
-        seq { for i in 0 .. n + 2 -> start + step * (float i) } |> Seq.toList
+    let points = [ start .. step .. float (n + 2) ]
 
     let pairs = points |> Seq.map (fun x -> (x, f x))
 
