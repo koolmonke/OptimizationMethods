@@ -1,4 +1,4 @@
-module Optimization.Polyline
+module OptimizationMethods.Polyline
 
 
 let argmin (left, right) accuracy f fp =

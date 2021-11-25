@@ -1,4 +1,4 @@
-﻿open Optimization
+open OptimizationMethods
 open Functions.Expressions
 open Functions.Operators
 
@@ -21,7 +21,7 @@ let main _ =
 
     let x_star_poly = Polyline.argmin range 1e-10 f fp
     let x_star_enum = Enumeration.argmin range 22 f
-
+    
     printfn $"x_star для метода ломанных %f{x_star_poly}"
     printfn $"x_star для метода перебора %f{x_star_enum}"
 
