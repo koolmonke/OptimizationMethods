@@ -12,15 +12,15 @@ let argmin range n f =
     let mutable x_left = x_new (1.0 + smaller_root) left right
 
     for i in 0 .. (n - 1) do
-        let lenght = x_right - x_left
+        let len = x_right - x_left
 
-        if (f x_left) <= (f x_right) then
+        if f x_left <= f x_right then
             right <- x_right
             x_right <- x_left
-            x_left <- left + lenght
+            x_left <- left + len
         else
             left <- x_left
             x_left <- x_right
-            x_right <- right - lenght
+            x_right <- right - len
 
     (left + right) / 2.0
