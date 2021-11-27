@@ -1,15 +1,16 @@
 open System.Collections.Generic
 open OptimizationMethods
 
-let memoization f x =
+let memoization f =
     let dict = Dictionary<_, _>()
 
-    match dict.TryGetValue(x) with
-    | true, value -> value
-    | false, _ ->
-        let tmp = f x
-        dict.Add(x, tmp)
-        tmp
+    fun x ->
+        match dict.TryGetValue(x) with
+        | true, value -> value
+        | false, _ ->
+            let tmp = f x
+            dict.Add(x, tmp)
+            tmp
 
 let n = 22
 
