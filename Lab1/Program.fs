@@ -17,7 +17,9 @@ let range = (0., 4.)
 
 let f =
     let inner_f x =
-        4.0 * x * x - 8.0 * x + 8.0 + 19.0 * abs (x - 3.0)
+        4.0 * x ** 2.0 - 8.0 * x
+        + 8.0
+        + 19.0 * abs (x - 3.0)
 
     memoization inner_f
 
