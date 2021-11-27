@@ -31,8 +31,9 @@ let main _ =
 
 
     printfn $"x_star для пассивного метода {x_star_passive}"
-    printfn $"Теоретическая точность {(fst range - snd range) / float (n / 2 + 1)}"
-    printfn $"Фактическая точность {abs (3.0 - x_star_passive)}"
+    printfn $"Теоретическая точность {(snd range - fst range) / float (n / 2 + 1)}"
+    let actual = 3.0
+    printfn $"Фактическая точность {abs (actual - x_star_passive)}"
 
     printfn $"x_star для метода золотого сечения {x_star_golden}"
 
@@ -40,6 +41,6 @@ let main _ =
         $"Теоретическая точность {(fst range - snd range)
                                     / (2.0 * pown Golden.bigger_root (n - 1))}"
 
-    printfn $"Фактическая точность {abs (3.0 - x_star_golden)}"
+    printfn $"Фактическая точность {abs (actual - x_star_golden)}"
 
     0
