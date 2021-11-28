@@ -11,7 +11,7 @@ let argmin range n f =
     let mutable x_right = x_new -smaller_root left right
     let mutable x_left = x_new (1.0 + smaller_root) left right
 
-    for i in 0 .. (n - 1) do
+    for i in 0 .. (n - 2) do
         let len = x_right - x_left
 
         if f x_left <= f x_right then
