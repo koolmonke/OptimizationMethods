@@ -1,7 +1,5 @@
 module Functions.Expressions
 
-open System
-
 
 type Expr =
     | Val of float
@@ -44,7 +42,7 @@ let rec evalf expr varName value =
     | Sub (a, b) -> (evalf a varName value) - (evalf b varName value)
     | Mul (a, b) -> (evalf a varName value) * (evalf b varName value)
     | Div (a, b) -> (evalf a varName value) / (evalf b varName value)
-    | Pow (a, b) -> Math.Pow(evalf a varName value, evalf b varName value)
+    | Pow (a, b) -> (evalf a varName value) ** (evalf b varName value)
     | Ln arg -> log (evalf arg varName value)
     | Sin arg -> sin (evalf arg varName value)
     | Cos arg -> cos (evalf arg varName value)
