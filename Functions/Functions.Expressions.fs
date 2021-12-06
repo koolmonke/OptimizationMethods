@@ -16,6 +16,7 @@ type Expr =
     | Sin of Expr
     | Exp of Expr
 
+
 let rec diff f x =
     match f with
     | Var y when x = y -> Val 1.0
@@ -27,36 +28,27 @@ let rec diff f x =
     | Div (f, g) -> Div(Sub(Mul(diff f x, g), Mul(diff g x, f)), Pow(g, Val 2.))
     | Pow (f, Val 2.) -> Mul(Val 2., f)
     | Pow (f, Val k) -> Mul(Val k, Pow(f, Val(k - 1.)))
-    | Pow (f, g) ->
-        Mul(Add(Mul(g, diff f x), Mul(Mul(f, Ln f), diff g x)), Pow(f, Sub(g, Val 1.0)))
+    | Pow (f, g) -> Mul(Add(Mul(g, diff f x), Mul(Mul(f, Ln f), diff g x)), Pow(f, Sub(g, Val 1.0)))
     | Ln arg -> Div(diff arg x, arg)
     | Sin arg -> Mul(Cos arg, diff arg x)
     | Cos arg -> Mul(Mul(Val -1.0, Sin arg), diff arg x)
     | Exp arg -> Mul(Exp arg, diff arg x)
+
 
 let rec evalf expr varName value =
     match expr with
     | Val number -> number
     | Var variable when variable = varName -> value
     | Var var -> failwith $"Переменная '%s{var}' не разрешена."
-    | Add (a, b) ->
-        (evalf a varName value)
-        + (evalf b varName value)
-    | Sub (a, b) ->
-        (evalf a varName value)
-        - (evalf b varName value)
-    | Mul (a, b) ->
-        (evalf a varName value)
-        * (evalf b varName value)
-    | Div (a, b) ->
-        (evalf a varName value)
-        / (evalf b varName value)
+    | Add (a, b) -> (evalf a varName value) + (evalf b varName value)
+    | Sub (a, b) -> (evalf a varName value) - (evalf b varName value)
+    | Mul (a, b) -> (evalf a varName value) * (evalf b varName value)
+    | Div (a, b) -> (evalf a varName value) / (evalf b varName value)
     | Pow (a, b) -> Math.Pow(evalf a varName value, evalf b varName value)
     | Ln arg -> log (evalf arg varName value)
     | Sin arg -> sin (evalf arg varName value)
     | Cos arg -> cos (evalf arg varName value)
     | Exp arg -> exp (evalf arg varName value)
-
 
 
 let rec show expr =
