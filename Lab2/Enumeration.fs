@@ -1,4 +1,4 @@
-module OptimizationMethods.Enumeration
+module Lab2.Enumeration
 
 let argmin (start, finish) n func =
     seq {

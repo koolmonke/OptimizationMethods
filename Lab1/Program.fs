@@ -1,5 +1,5 @@
 open System.Collections.Generic
-open OptimizationMethods
+open Lab1
 
 let memoization f =
     let dict = Dictionary<_, _>()
@@ -39,7 +39,7 @@ let main _ =
 
     printfn
         $"Теоретическая точность {(fst range - snd range)
-                                    / (2.0 * pown Golden.bigger_root (n - 1))}"
+                                  / (2.0 * pown Golden.bigger_root (n - 1))}"
 
     printfn $"Фактическая точность {abs (actual - x_star_golden)}"
 

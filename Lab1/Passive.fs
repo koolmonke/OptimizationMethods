@@ -1,4 +1,4 @@
-﻿module OptimizationMethods.Passive
+﻿module Lab1.Passive
 
 open System.Diagnostics
 

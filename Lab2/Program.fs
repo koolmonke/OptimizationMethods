@@ -1,6 +1,6 @@
-open OptimizationMethods
 open Functions.Expressions
 open Functions.Operators
+open Lab2
 
 let range = (-7., 3.)
 

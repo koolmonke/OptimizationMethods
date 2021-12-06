@@ -1,4 +1,4 @@
-﻿module OptimizationMethods.Golden
+﻿module Lab1.Golden
 
 let bigger_root = (1.0 + sqrt 5.0) / 2.0
 

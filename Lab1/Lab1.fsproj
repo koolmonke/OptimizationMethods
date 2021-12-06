@@ -6,11 +6,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="Program.fs" />
+        <Compile Include="Passive.fs"/>
+        <Compile Include="Golden.fs"/>
+        <Compile Include="Program.fs"/>
     </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\OptimizationMethods\OptimizationMethods.fsproj" />
-    </ItemGroup>
-
 </Project>
