@@ -53,11 +53,11 @@ let rec show expr =
     match expr with
     | Val number -> string number
     | Var var -> var
-    | Add (a, b) -> $"{show a}+{show b}"
-    | Sub (a, b) -> $"{show a}-{show b}"
-    | Mul (a, b) -> $"{show a}*{show b}"
-    | Div (a, b) -> $"{show a}/{show b}"
-    | Pow (a, b) -> $"{show a}**({show b})"
+    | Add (a, b) -> $"({show a}+{show b})"
+    | Sub (a, b) -> $"({show a}-{show b})"
+    | Mul (a, b) -> $"({show a}*{show b})"
+    | Div (a, b) -> $"({show a}/{show b})"
+    | Pow (a, b) -> $"{show a}**{show b}"
     | Ln arg -> $"Ln({show arg})"
     | Sin arg -> $"Sin({show arg})"
     | Cos arg -> $"Cos({show arg})"
