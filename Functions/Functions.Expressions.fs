@@ -1,5 +1,7 @@
 module Functions.Expressions
 
+open System.Collections.Generic
+
 
 type Expr =
     | Val of float
@@ -47,6 +49,24 @@ let rec evalf expr varName value =
     | Sin arg -> sin (evalf arg varName value)
     | Cos arg -> cos (evalf arg varName value)
     | Exp arg -> exp (evalf arg varName value)
+
+let rec evalfFromDict expr (vars: Dictionary<string, float>) =
+    match expr with
+    | Val number -> number
+    | Var var ->
+        match vars.TryGetValue(var) with
+        | true, value -> value
+        | false, _ -> failwith $"Переменная '%s{var}' не разрешена."
+    | Add (a, b) -> (evalfFromDict a vars) + (evalfFromDict b vars)
+    | Sub (a, b) -> (evalfFromDict a vars) - (evalfFromDict b vars)
+    | Mul (a, b) -> (evalfFromDict a vars) * (evalfFromDict b vars)
+    | Div (a, b) -> (evalfFromDict a vars) / (evalfFromDict b vars)
+    | Pow (a, b) -> (evalfFromDict a vars) ** (evalfFromDict b vars)
+    | Ln arg -> log (evalfFromDict arg vars)
+    | Sin arg -> sin (evalfFromDict arg vars)
+    | Cos arg -> cos (evalfFromDict arg vars)
+    | Exp arg -> exp (evalfFromDict arg vars)
+
 
 
 let rec show expr =
