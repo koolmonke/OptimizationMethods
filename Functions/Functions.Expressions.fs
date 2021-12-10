@@ -35,22 +35,7 @@ let rec diff f x =
     | Exp arg -> Mul(Exp arg, diff arg x)
 
 
-let rec evalf expr varName value =
-    match expr with
-    | Val number -> number
-    | Var variable when variable = varName -> value
-    | Var var -> failwith $"Переменная '%s{var}' не разрешена."
-    | Add (a, b) -> (evalf a varName value) + (evalf b varName value)
-    | Sub (a, b) -> (evalf a varName value) - (evalf b varName value)
-    | Mul (a, b) -> (evalf a varName value) * (evalf b varName value)
-    | Div (a, b) -> (evalf a varName value) / (evalf b varName value)
-    | Pow (a, b) -> (evalf a varName value) ** (evalf b varName value)
-    | Ln arg -> log (evalf arg varName value)
-    | Sin arg -> sin (evalf arg varName value)
-    | Cos arg -> cos (evalf arg varName value)
-    | Exp arg -> exp (evalf arg varName value)
-
-let rec evalfFromDict expr (vars: Dictionary<string, float>) =
+let rec evalfFromDict expr (vars: IDictionary<string, float>) =
     match expr with
     | Val number -> number
     | Var var ->
@@ -67,7 +52,8 @@ let rec evalfFromDict expr (vars: Dictionary<string, float>) =
     | Cos arg -> cos (evalfFromDict arg vars)
     | Exp arg -> exp (evalfFromDict arg vars)
 
-
+let evalf expr varName value =
+    [ (varName, value) ] |> dict |> evalfFromDict expr
 
 let rec show expr =
     match expr with
