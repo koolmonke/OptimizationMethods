@@ -7,7 +7,6 @@
 
     <ItemGroup>
         <Compile Include="Functions.Expressions.fs" />
-        <Compile Include="Functions.Operators.fs" />
     </ItemGroup>
 
 </Project>

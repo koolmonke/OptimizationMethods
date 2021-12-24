@@ -1,5 +1,4 @@
 open Functions.Expressions
-open Functions.Operators
 open Lab2
 
 let range = (-7., 3.)
@@ -12,15 +11,21 @@ let expr =
     - Val 96. * x
     + Val 1.
 
-[<EntryPoint>]
-let main _ =
-    let f = evalf expr "x"
-    let fp = evalf (diff expr "x") "x"
 
-    let x_star_poly = Polyline.argmin range 1e-10 f fp
-    let x_star_enum = Enumeration.argmin range 22 f
+let f = evalf expr "x"
+let fp = evalf (diff expr "x") "x"
+let actual = -143.
+let n = 22
+let accuracy = 1e-10
+let polylineResult = Polyline.argmin range accuracy f fp
+let xStarPoly = fst polylineResult
+let xStarEnum = Enumeration.argmin range n f
 
-    printfn $"x_star для метода ломанных {x_star_poly}"
-    printfn $"x_star для метода перебора {x_star_enum}"
 
-    0
+printfn $"x* для метода перебора {xStarEnum}" //-141,8501425790588
+printfn $"Фактическая точность {abs (actual - xStarEnum)}" // 1,1498574209412027
+printfn $"Теоретическая точность {(snd range - fst range) / float (2 * n)}" // 0,22727272727272727
+printfn $"x* для метода ломанных {xStarPoly}" // -143
+printfn $"Фактическая точность {abs (actual - xStarPoly)}" // 0
+printfn $"Теоретическая точность {accuracy}" // 1E-10
+printfn $"Количество итераций для метода ломаных {snd polylineResult}" // 42

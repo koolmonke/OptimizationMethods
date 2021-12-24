@@ -7,7 +7,7 @@ let argmin (left, right) accuracy f fp =
         |> List.map (fp >> abs)
         |> List.max
 
-    let rec r_argmin (left, right) =
+    let rec r_argmin (left, right) iterCount =
         let f_left = f left
         let f_right = f right
 
@@ -26,8 +26,9 @@ let argmin (left, right) accuracy f fp =
         let y1pp = fp x1pp
 
         match ld > accuracy, abs y1p < abs y1pp with
-        | true, true -> r_argmin (left, x0)
-        | true, false -> r_argmin (x0, right)
-        | false, _ -> x0
+        | true, true -> r_argmin (left, x0) (iterCount + 1)
+        | true, false -> r_argmin (x0, right) (iterCount + 1)
+        | false, _ -> x0, iterCount
 
-    f (r_argmin (left, right))
+    let rArgmin, iterCount = r_argmin (left, right) 0
+    f rArgmin, iterCount

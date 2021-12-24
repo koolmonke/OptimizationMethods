@@ -24,23 +24,20 @@ let f =
 
     memoization inner_f
 
-[<EntryPoint>]
-let main _ =
-    let x_star_passive = Passive.argmin range n f
-    let x_star_golden = Golden.argmin range n f
+let actual = 3.0
+
+let xStarPassive = Passive.argmin range n f
+let xStarGolden = Golden.argmin range n f
 
 
-    printfn $"x_star для пассивного метода {x_star_passive}"
-    printfn $"Теоретическая точность {(snd range - fst range) / float (n / 2 + 1)}"
-    let actual = 3.0
-    printfn $"Фактическая точность {abs (actual - x_star_passive)}"
+printfn $"x* для пассивного метода {xStarPassive}" // 2,833333333333333
+printfn $"Теоретическая точность {(snd range - fst range) / float (n / 2 + 1)}" //  0,3333333333333333
+printfn $"Фактическая точность {abs (actual - xStarPassive)}" //  0,16666666666666696
 
-    printfn $"x_star для метода золотого сечения {x_star_golden}"
+printfn $"x* для метода золотого сечения {xStarGolden}" // 2,9999279321739536
 
-    printfn
-        $"Теоретическая точность {(fst range - snd range)
-                                  / (2.0 * pown Golden.bigger_root (n - 1))}"
+printfn
+    $"Теоретическая точность {(fst range - snd range)
+                              / (2.0 * pown Golden.bigger_root (n - 1))}" // -8,171269801689479E-05
 
-    printfn $"Фактическая точность {abs (actual - x_star_golden)}"
-
-    0
+printfn $"Фактическая точность {abs (actual - xStarGolden)}" // 7,206782604640694E-05
