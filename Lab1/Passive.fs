@@ -27,6 +27,7 @@ let argmin (start, finish) n f =
         |> Seq.indexed
         |> Seq.minBy (snd >> snd)
         |> fst
+        |> (+) 1
 
     (points.[min_index - 1] + points.[min_index + 1])
     / 2.0
