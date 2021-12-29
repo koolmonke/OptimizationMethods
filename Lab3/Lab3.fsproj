@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="VectorNorm.fs" />
+        <Compile Include="Fragmentation.fs" />
+        <Compile Include="FastDown.fs" />
+        <Compile Include="Program.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\NumericalMethods\MatrixArithmetic\MatrixArithmetic.csproj" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,4 @@
+[submodule "NumericalMethods"]
+	path = NumericalMethods
+	url = https://github.com/koolmonkey/NumericalMethods
+	branch = master
