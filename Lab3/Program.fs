@@ -1,3 +1,4 @@
+open System
 open Lab3
 open MatrixArithmetic
 
@@ -28,14 +29,14 @@ let a =
     m.[1, 1] <- 6
     m
 
-let eps = 0.01
+let eps = 0.001
 let betta = 3.
 let lambda = 0.5
 
 let FragmentationResult =
     Fragmentation.argmin f fp eps betta lambda
 
-printfn $"{formatOutput f FragmentationResult}"
+Console.WriteLine(formatOutput f FragmentationResult)
 let FastDownResult = FastDown.argmin fp a eps
 
-printfn $"{formatOutput f FastDownResult}"
+Console.WriteLine(formatOutput f FastDownResult)
