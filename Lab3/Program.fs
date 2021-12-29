@@ -37,6 +37,3 @@ let FragmentationResult =
     Fragmentation.argmin f fp eps betta lambda
 
 Console.WriteLine(formatOutput f FragmentationResult)
-let FastDownResult = FastDown.argmin fp a eps
-
-Console.WriteLine(formatOutput f FastDownResult)
