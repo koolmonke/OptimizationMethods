@@ -8,7 +8,6 @@
     <ItemGroup>
         <Compile Include="VectorNorm.fs" />
         <Compile Include="Fragmentation.fs" />
-        <Compile Include="FastDown.fs" />
         <Compile Include="Program.fs" />
     </ItemGroup>
 

@@ -21,14 +21,6 @@ let fp (v: Vector) =
     v.[1] <- 6. * (-2. + 3. * x + y)
     v
 
-let a =
-    let mutable m = Matrix(2, 2)
-    m.[0, 0] <- 58
-    m.[0, 1] <- 18
-    m.[1, 0] <- 18
-    m.[1, 1] <- 6
-    m
-
 let eps = 0.001
 let betta = 3.
 let lambda = 0.5
