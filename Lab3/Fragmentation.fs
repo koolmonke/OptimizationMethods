@@ -4,22 +4,27 @@ open MatrixArithmetic
 open VectorNorm
 
 let argmin (f: Vector -> float) (fp: Vector -> Vector) (eps: float) (betta: float) (lambda: float) =
-    let mutable xk = Vector(2)
-    let mutable xkp = Vector(2)
-    xkp.[0] <- 1
-    xkp.[1] <- 1
+    let xk = Vector(2)
 
-    let mutable counter = 0
+    let xkp =
+        let tmp = Vector(2)
+        tmp.[0] <- 1
+        tmp.[1] <- 1
+        tmp
 
-    while vectorNorm (xk - xkp) >= eps do
-        xk <- xkp
-        let mutable alpha = betta
-        let h = -1. * fp xkp
+    let rec rArgmin xk xkp counter =
+        if vectorNorm (xk - xkp) >= eps then
+            let h = -1. * fp xkp
 
-        while f (xkp + alpha * h) >= (f xkp) do
-            alpha <- alpha * lambda
+            let rec innerLoop alpha =
+                if f (xkp + alpha * h) >= (f xkp) then
+                    innerLoop (alpha * lambda)
+                else
+                    alpha
 
-        xkp <- xkp + (alpha * h)
-        counter <- counter + 1
+            let alpha = innerLoop betta
+            rArgmin xkp (xkp + (alpha * h)) (counter + 1)
+        else
+            xk, counter
 
-    xk, counter
+    rArgmin xk xkp 0
