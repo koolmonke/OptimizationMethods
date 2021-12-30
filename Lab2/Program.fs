@@ -22,9 +22,9 @@ let xStarPoly = fst polylineResult
 let xStarEnum = Enumeration.argmin range n f
 
 
-printfn $"x* для метода перебора {xStarEnum}" //-141,8501425790588
-printfn $"Фактическая точность {abs (actual - xStarEnum)}" // 1,1498574209412027
-printfn $"Теоретическая точность {(snd range - fst range) / float (2 * n)}" // 0,22727272727272727
+printfn $"x* для метода перебора {xStarEnum}"
+printfn $"Фактическая точность {abs (actual - xStarEnum)}"
+printfn $"Теоретическая точность {(snd range - fst range) / float (2 * n)}"
 printfn $"x* для метода ломанных {xStarPoly}" // -143
 printfn $"Фактическая точность {abs (actual - xStarPoly)}" // 0
 printfn $"Теоретическая точность {accuracy}" // 1E-10

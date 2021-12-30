@@ -7,7 +7,7 @@ let formatOutput f (v: Vector, iterCount) =
     $"достигнуто минимальное значение f({args})={f v} за {iterCount} итераций"
 
 let f (v: Vector) =
-    let x, y = (v.[0], v.[1])
+    let x, y = v.[0], v.[1]
 
     29. * x ** 2. + 18. * x * y + 3. * y ** 2.
     - 24. * x
@@ -15,7 +15,7 @@ let f (v: Vector) =
     + 31.
 
 let fp (v: Vector) =
-    let x, y = (v.[0], v.[1])
+    let x, y = v.[0], v.[1]
     let v = Vector(2)
     v.[0] <- -24. + 58. * x + 18. * y
     v.[1] <- 6. * (-2. + 3. * x + y)

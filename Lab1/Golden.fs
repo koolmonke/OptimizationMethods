@@ -1,15 +1,15 @@
 ﻿module Lab1.Golden
 
-let bigger_root = (1.0 + sqrt 5.0) / 2.0
+let biggerRoot = (1.0 + sqrt 5.0) / 2.0
 
-let smaller_root = (1.0 - sqrt 5.0) / 2.0
+let SmallerRoot = (1.0 - sqrt 5.0) / 2.0
 
-let x_new x left right = left + (right - left) * x
+let xNew x left right = left + (right - left) * x
 
 let argmin range n f =
     let mutable left, right = range
-    let mutable x_right = x_new -smaller_root left right
-    let mutable x_left = x_new (1.0 + smaller_root) left right
+    let mutable x_right = xNew -SmallerRoot left right
+    let mutable x_left = xNew (1.0 + SmallerRoot) left right
 
     for i in 0 .. (n - 2) do
         let len = x_right - x_left

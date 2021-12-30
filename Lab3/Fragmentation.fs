@@ -17,13 +17,13 @@ let argmin (f: Vector -> float) (fp: Vector -> Vector) (eps: float) (betta: floa
             let h = -1. * fp xkp
 
             let rec innerLoop alpha =
-                if f (xkp + alpha * h) >= (f xkp) then
+                if f (xkp + alpha * h) >= f xkp then
                     innerLoop (alpha * lambda)
                 else
                     alpha
 
             let alpha = innerLoop betta
-            rArgmin xkp (xkp + (alpha * h)) (counter + 1)
+            rArgmin xkp (xkp + alpha * h) (counter + 1)
         else
             xk, counter
 
