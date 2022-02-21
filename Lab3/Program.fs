@@ -1,10 +1,7 @@
-open System
 open Lab3
 open MatrixArithmetic
 
-let formatOutput f (v: Vector, iterCount) =
-    let args = v.ToString("F4", ",")
-    $"достигнуто минимальное значение f({args})={f v} за {iterCount} итераций"
+
 
 let f (v: Vector) =
     let x, y = v.[0], v.[1]
@@ -25,7 +22,7 @@ let eps = 0.001
 let betta = 3.
 let lambda = 0.5
 
-let FragmentationResult =
+let v, iterCount =
     Fragmentation.argmin f fp eps betta lambda
 
-Console.WriteLine(formatOutput f FragmentationResult)
+printfn $"""достигнуто минимальное значение f({v.ToString("F4", ",")})={f v} за {iterCount} итераций"""
