@@ -5,12 +5,7 @@ open VectorNorm
 
 let argmin (f: Vector -> float) (fp: Vector -> Vector) (eps: float) (betta: float) (lambda: float) =
     let xk = Vector(2)
-
-    let xkp =
-        let tmp = Vector(2)
-        tmp.[0] <- 1
-        tmp.[1] <- 1
-        tmp
+    let xkp = Vector([ 1.; 1. ])
 
     let rec rArgmin xk xkp counter =
         if vectorNorm (xk - xkp) >= eps then
