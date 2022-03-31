@@ -7,11 +7,11 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Lab1", "Lab1\Lab1.fsproj", 
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Lab2", "Lab2\Lab2.fsproj", "{3C7388D1-8A27-4E32-A5C5-8EEE2BA896ED}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Functions", "Functions\Functions.fsproj", "{280651B0-3AC2-4F2D-9BAB-F80D0A258ADA}"
-EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Lab3", "Lab3\Lab3.fsproj", "{B57FC20F-D5A9-4C13-8C32-6274EAA415FE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatrixArithmetic", "NumericalMethods\MatrixArithmetic\MatrixArithmetic.csproj", "{5F0DE842-9B9C-4A62-9E1B-0012FC05733A}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Functions", "functions\Functions\Functions.fsproj", "{D8695511-3D16-4790-BDC8-06B8BE7D5DA7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,10 +30,6 @@ Global
 		{3C7388D1-8A27-4E32-A5C5-8EEE2BA896ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C7388D1-8A27-4E32-A5C5-8EEE2BA896ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C7388D1-8A27-4E32-A5C5-8EEE2BA896ED}.Release|Any CPU.Build.0 = Release|Any CPU
-		{280651B0-3AC2-4F2D-9BAB-F80D0A258ADA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{280651B0-3AC2-4F2D-9BAB-F80D0A258ADA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{280651B0-3AC2-4F2D-9BAB-F80D0A258ADA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{280651B0-3AC2-4F2D-9BAB-F80D0A258ADA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B57FC20F-D5A9-4C13-8C32-6274EAA415FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B57FC20F-D5A9-4C13-8C32-6274EAA415FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B57FC20F-D5A9-4C13-8C32-6274EAA415FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -42,5 +38,9 @@ Global
 		{5F0DE842-9B9C-4A62-9E1B-0012FC05733A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F0DE842-9B9C-4A62-9E1B-0012FC05733A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F0DE842-9B9C-4A62-9E1B-0012FC05733A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8695511-3D16-4790-BDC8-06B8BE7D5DA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8695511-3D16-4790-BDC8-06B8BE7D5DA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8695511-3D16-4790-BDC8-06B8BE7D5DA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8695511-3D16-4790-BDC8-06B8BE7D5DA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
