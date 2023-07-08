@@ -8,12 +8,13 @@ let argmin (start, finish) n f =
 
     let delta = step / 2.0 * 10e-2
 
-    let mutable points = Array.zeroCreate (n + 2)
+    let points =
+        let p = Array.zeroCreate (n + 2)
+        p.[0] <- start
+        p.[n + 1] <- finish
+        p
 
-    points.[0] <- start
-    points.[n + 1] <- finish
-
-    for i in 1 .. k do
+    for i in 1..k do
         points.[2 * i] <- start + step * float i
         points.[2 * i - 1] <- points.[2 * i] - delta
 
@@ -21,7 +22,7 @@ let argmin (start, finish) n f =
     Debug.Assert(Array.last points = finish)
     Debug.Assert(points.Length = n + 2)
 
-    let min_index =
+    let minIndex =
         points.[1..n]
         |> Seq.map (fun x -> (x, f x))
         |> Seq.indexed
@@ -29,5 +30,4 @@ let argmin (start, finish) n f =
         |> fst
         |> (+) 1
 
-    (points.[min_index - 1] + points.[min_index + 1])
-    / 2.0
+    (points.[minIndex - 1] + points.[minIndex + 1]) / 2.0

@@ -2,21 +2,15 @@ module Lab2.Polyline
 
 
 let argmin (left, right) accuracy f fp =
-    let L =
-        [ left; right ]
-        |> List.map (fp >> abs)
-        |> List.max
+    let L = [ left; right ] |> List.map (fp >> abs) |> List.max
 
     let rec rArgmin (left, right) iterCount =
-        let f_left = f left
-        let f_right = f right
+        let fLeft = f left
+        let fRight = f right
 
-        let x0 =
-            (1.0 / (2.0 * L))
-            * (f_left - f_right + L * (left + right))
+        let x0 = (1.0 / (2.0 * L)) * (fLeft - fRight + L * (left + right))
 
-        let p0 =
-            0.5 * (f_left + f_right + L * (left - right))
+        let p0 = 0.5 * (fLeft + fRight + L * (left - right))
 
         let d = (1.0 / (2.0 * L)) * (f x0 - p0)
         let x1p = x0 - d
